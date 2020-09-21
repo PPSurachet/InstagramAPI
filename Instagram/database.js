@@ -9,19 +9,20 @@ const pool = new Pool({
 })
 
 
-async function getallPost(){
-    const sql = `select * from post_classification_mana limit 20`;
+async function getallPost() {
+    //post_classification_mana
+    const sql = `select * from post_mana limit 20`;
 
     try {
         const data = await pool.query(sql);
         return data;
-    }catch (err){
+    } catch (err) {
         console.log(err);
         return null;
     }
 }
 
-async function getPostbyid(id){
+async function getPostbyid(id) {
 
     const sql = `select * from post_mana where id = ${id}`
 
@@ -34,7 +35,7 @@ async function getPostbyid(id){
     }
 }
 
-async function Insertpostclassification(post){
+async function Insertpostclassification(post) {
 
     const sql = `INSERT INTO post_classification_mana (shortcode, ads, timestamp)
     VALUES('${post.shortcode}','${post.ads}','${post.timestamp}') `
@@ -48,7 +49,7 @@ async function Insertpostclassification(post){
     }
 }
 
-async function Updatepostclassification(post){
+async function Updatepostclassification(post) {
 
     const sql = `update post_classification_mana set
     ads = '${post.ads}',
@@ -66,7 +67,7 @@ async function Updatepostclassification(post){
 
 
 
-module.exports ={
+module.exports = {
     getallPost,
     getPostbyid,
     Insertpostclassification,
