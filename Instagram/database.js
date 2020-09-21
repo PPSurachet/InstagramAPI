@@ -1,20 +1,12 @@
 const { Pool } = require('pg')
 
 const pool = new Pool({
-    user: 'manalab',
-    host: '35.247.188.203',
-    database: 'manalab',
-    password: 'zxc123**',
+    user: process.env.DATABASE_USERNAME,
+    host: process.env.DATABASE_HOST,
+    database: process.env.DATABASE_NAME,
+    password: process.env.DATABASE_PASSWORD,
     port: 5432,
 })
-
-// const pool = new Pool({
-//     user: process.env.DATABASE_NAME,
-//     host: process.env.DATABASE_HOST,
-//     database: 'manalab',
-//     password: 'zxc123**',
-//     port: 5432,
-// })
 
 
 async function getallPost(){
