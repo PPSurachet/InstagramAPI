@@ -11,7 +11,7 @@ const pool = new Pool({
 
 async function getallPost() {
     //post_classification_mana
-    const sql = `select * from post_mana limit 20`;
+    const sql = `select * from post_mana limit 100`;
 
     try {
         const data = await pool.query(sql);

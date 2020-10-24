@@ -1,5 +1,6 @@
 $(async function () {
     const APIurl = "https://insta-api-por.herokuapp.com/api/posts";
+
     try {
         const response = await axios.get(APIurl);
         console.log(response);
@@ -18,9 +19,11 @@ $(async function () {
     }
 
     try {
+
         const response = await axios.get(APIurl);
+
         $("#SearchID").click(function () {
-            // $("#SearchPosts").empty();
+            $("#SearchPosts").empty();
             const ID = $("#ID").val();
             const post = response.data.data[ID - 1];
             let row = `<tr>
@@ -33,7 +36,7 @@ $(async function () {
         })
 
         $("#SearchSC").click(function () {
-            // $("#SearchPosts").empty();
+            $("#SearchPosts").empty();
             const Shortcode = $("#SC").val();
             for (const postid in response.data.data) {
                 const post = response.data.data[postid];
@@ -47,13 +50,6 @@ $(async function () {
                     $("#SearchPosts").append(row);
                 }
             }
-            // let row = `<tr>
-            //             <th scope="row">${post.id}</th>
-            //             <td>${post.shortcode}</td>
-            //             <td>${post.full_name}</td>
-            //             <td>${post.location_name}</td>
-            //         </tr>`;
-            // $("#SearchPosts").append(row);
         })
 
     } catch (error) {
